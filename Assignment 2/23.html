@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow</title>
+  <style>
+    /* Optional styling for the image and buttons */
+    #image {
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="image1.jpg" alt="Slide Image">
+  <div class="buttons">
+    <button id="previousBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <script>
+    const images = ['image1.jpg', 'image2.jpg', 'image3.jpg']; // Replace with your image paths
+    let currentIndex = 0;
+
+    const imageElement = document.getElementById('image');
+    const previousBtn = document.getElementById('previousBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    previousBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      imageElement.src = images[currentIndex];
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      imageElement.src = images[currentIndex];
+    });
+  </script>
+</body>
+</html>
